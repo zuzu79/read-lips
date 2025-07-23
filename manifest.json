@@ -8,6 +8,6 @@
   "compatibleCoreVersion": "14",
   "scripts": ["scripts/read-lips-hook.js"],
   "systems": ["pf2e"],
-  "download": "https://raw.githubusercontent.com/yourusername/read-lips/main/read-lips.zip",
-  "manifest": "https://raw.githubusercontent.com/yourusername/read-lips/main/manifest.json"
+  "download": "https://raw.githubusercontent.com/zuzu79/read-lips/main/read-lips.zip",
+  "manifest": "https://raw.githubusercontent.com/zuzu79/read-lips/main/manifest.json"
 }
