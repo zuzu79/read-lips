@@ -1,0 +1,12 @@
+{
+  "id": "read-lips",
+  "name": "read-lips",
+  "title": "Read Lips GM Listener",
+  "description": "Plays a sound when a player uses a Read Lips macro that whispers the action to the GM.",
+  "version": "1.0.0",
+  "author": "Agent Zuzu",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "14",
+  "scripts": ["scripts/read-lips-hook.js"],
+  "systems": ["pf2e"]
+}
