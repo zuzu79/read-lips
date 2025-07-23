@@ -4,17 +4,24 @@ Hooks.once("ready", () => {
 
   console.log("🫦 Read Lips GM Listener is active.");
 
-  Hooks.on("createChatMessage", (msg) => {
+  Hooks.on("createChatMessage", async (msg) => {
     if (!msg.isWhisper) return;
 
-    // Trigger sound on messages containing the lip-reading emoji
+    // Only whisper to the GM and includes 👄
+    const isToGM = msg.whisper?.some(id => id === game.user.id);
+    if (!isToGM) return;
+
     if (msg.content?.includes("👄")) {
-      AudioHelper.play({
-        src: "modules/monks-tokenbar/sounds/RollRequestAlert.ogg",
-        volume: 0.8,
-        autoplay: true,
-        loop: false
-      }, true);
+      try {
+        await AudioHelper.play({
+          src: "modules/monks-tokenbar/sounds/RollRequestAlert.ogg",
+          volume: 0.8,
+          autoplay: true,
+          loop: false
+        }, true);
+      } catch (err) {
+        console.warn("🔇 Failed to play Read Lips sound:", err);
+      }
     }
   });
 });
