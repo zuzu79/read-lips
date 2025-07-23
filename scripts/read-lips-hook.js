@@ -7,11 +7,11 @@ Hooks.once("ready", () => {
   Hooks.on("createChatMessage", async (msg) => {
     if (!msg.isWhisper) return;
 
-    // Only whisper to the GM and includes 👄
     const isToGM = msg.whisper?.some(id => id === game.user.id);
     if (!isToGM) return;
 
     if (msg.content?.includes("👄")) {
+      console.log("👂 Whisper received with 👄 emoji, attempting to play sound...");
       try {
         await AudioHelper.play({
           src: "modules/monks-tokenbar/sounds/RollRequestAlert.ogg",
@@ -19,6 +19,7 @@ Hooks.once("ready", () => {
           autoplay: true,
           loop: false
         }, true);
+        console.log("🔊 Sound played!");
       } catch (err) {
         console.warn("🔇 Failed to play Read Lips sound:", err);
       }
