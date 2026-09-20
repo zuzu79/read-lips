@@ -17,7 +17,7 @@ Hooks.once("ready", () => {
     console.log("👂 Read Lips whisper received. Playing alert sound...");
 
     try {
-      await AudioHelper.play({
+      await foundry.audio.AudioHelper.play({
         src: "modules/monks-tokenbar/sounds/RollRequestAlert.ogg",
         volume: 0.8,
         autoplay: true,
