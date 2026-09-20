@@ -7,12 +7,9 @@ Hooks.once("ready", () => {
   console.log("👄 Read Lips GM Listener is active.");
 
   Hooks.on("createChatMessage", async (msg) => {
-    // Ignore messages that are not whispers.
-    if (!msg.isWhisper) return;
-
-    // Only react if this GM is one of the whisper recipients.
-    const isToGM = msg.whisper?.some(id => id === game.user.id);
-    if (!isToGM) return;
+    // Only react to whispers sent to this GM.
+    const whisperRecipients = msg.whisper ?? [];
+    if (!whisperRecipients.includes(game.user.id)) return;
 
     // Read Lips macros identify themselves with the 👄 emoji.
     if (!msg.content?.includes("👄")) return;
@@ -29,7 +26,10 @@ Hooks.once("ready", () => {
 
       console.log("🔊 Read Lips alert sound played.");
     } catch (err) {
-      console.warn("🔇 Read Lips GM Listener failed to play its alert sound:", err);
+      console.warn(
+        "🔇 Read Lips GM Listener failed to play its alert sound:",
+        err
+      );
     }
   });
 });
